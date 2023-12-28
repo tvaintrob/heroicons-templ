@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"os"
 	"regexp"
@@ -8,6 +9,7 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/beevik/etree"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 )
@@ -34,7 +36,17 @@ func NewIconInfo(path string) IconInfo {
 		panic(err)
 	}
 
-	return IconInfo{sizenum, buildIconName(name), group, string(content)}
+	info := IconInfo{sizenum, buildIconName(name), group, string(content)}
+	switch sizenum {
+	case 24:
+		info.addClasses("w-6 h-6")
+	case 20:
+		info.addClasses("w-5 h-5")
+	case 16:
+		info.addClasses("w-4 h-4")
+	}
+
+	return info
 }
 
 func buildIconName(name string) string {
@@ -57,4 +69,25 @@ templ {{.Name}}Icon() {
   `))
 
 	return templ.Execute(w, i)
+}
+
+func (i *IconInfo) addClasses(classes string) error {
+	doc := etree.NewDocument()
+	if err := doc.ReadFromString(i.Content); err != nil {
+		return err
+	}
+
+	element := doc.FindElement("//svg")
+	if element == nil {
+		return fmt.Errorf("no svg element found")
+	}
+
+	element.CreateAttr("class", classes)
+	updatedContent, err := doc.WriteToString()
+	if err != nil {
+		return err
+	}
+
+	i.Content = updatedContent
+	return nil
 }

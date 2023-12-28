@@ -23,7 +23,7 @@ func ArrowLongUpIcon() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M8 14C8.41421 14 8.75 13.6642 8.75 13.25V4.56066L9.96967 5.78033C10.2626 6.07322 10.7374 6.07322 11.0303 5.78033C11.3232 5.48744 11.3232 5.01256 11.0303 4.71967L8.53033 2.21967C8.23744 1.92678 7.76256 1.92678 7.46967 2.21967L4.96967 4.71967C4.67678 5.01256 4.67678 5.48744 4.96967 5.78033C5.26256 6.07322 5.73744 6.07322 6.03033 5.78033L7.25 4.56066V13.25C7.25 13.6642 7.58579 14 8 14Z\" fill=\"#0F172A\"></path></svg>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"w-4 h-4\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M8 14C8.41421 14 8.75 13.6642 8.75 13.25V4.56066L9.96967 5.78033C10.2626 6.07322 10.7374 6.07322 11.0303 5.78033C11.3232 5.48744 11.3232 5.01256 11.0303 4.71967L8.53033 2.21967C8.23744 1.92678 7.76256 1.92678 7.46967 2.21967L4.96967 4.71967C4.67678 5.01256 4.67678 5.48744 4.96967 5.78033C5.26256 6.07322 5.73744 6.07322 6.03033 5.78033L7.25 4.56066V13.25C7.25 13.6642 7.58579 14 8 14Z\" fill=\"#0F172A\"></path></svg>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
