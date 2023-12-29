@@ -83,6 +83,7 @@ func (i *IconInfo) addClasses(classes string) error {
 	}
 
 	element.CreateAttr("class", classes)
+  element.CreateAttr("fill", "currentColor")
 	updatedContent, err := doc.WriteToString()
 	if err != nil {
 		return err
