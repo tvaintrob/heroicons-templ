@@ -39,11 +39,11 @@ func NewIconInfo(path string) IconInfo {
 	info := IconInfo{sizenum, buildIconName(name), group, string(content)}
 	switch sizenum {
 	case 24:
-		info.addClasses("w-6 h-6")
+		info.fixSvgContent("w-6 h-6")
 	case 20:
-		info.addClasses("w-5 h-5")
+		info.fixSvgContent("w-5 h-5")
 	case 16:
-		info.addClasses("w-4 h-4")
+		info.fixSvgContent("w-4 h-4")
 	}
 
 	return info
@@ -71,7 +71,7 @@ templ {{.Name}}Icon() {
 	return templ.Execute(w, i)
 }
 
-func (i *IconInfo) addClasses(classes string) error {
+func (i *IconInfo) fixSvgContent(classes string) error {
 	doc := etree.NewDocument()
 	if err := doc.ReadFromString(i.Content); err != nil {
 		return err
@@ -83,7 +83,12 @@ func (i *IconInfo) addClasses(classes string) error {
 	}
 
 	element.CreateAttr("class", classes)
-  element.CreateAttr("fill", "currentColor")
+	element.CreateAttr("fill", "currentColor")
+
+	for _, e := range element.ChildElements() {
+		e.RemoveAttr("fill")
+	}
+
 	updatedContent, err := doc.WriteToString()
 	if err != nil {
 		return err
