@@ -27,7 +27,7 @@ func main() {
 			log.Fatal(err)
 		}
 
-		if err := icon.GenerateTemplComponent(w); err != nil {
+		if err := icon.generateTemplComponent(w); err != nil {
 			log.Fatal(err)
 		}
 	}
