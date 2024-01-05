@@ -23,4 +23,4 @@ templ ExamplePage() {
 }
 ```
 
-For a working example refer to [./example/README.md]
+For a working example refer to [example](./example/README.md)
